@@ -1,5 +1,7 @@
-package com.example.quickwindemo;
+package com.springbootblog.service;
 
+import com.springbootblog.dto.HelloDto;
+import com.springbootblog.model.AppVisitorList;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;

@@ -1,4 +1,4 @@
-package com.example.quickwindemo;
+package com.springbootblog.model;
 
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;

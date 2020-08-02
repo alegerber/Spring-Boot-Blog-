@@ -1,4 +1,4 @@
-package com.example.quickwindemo;
+package com.springbootblog.dto;
 
 public class HelloDto {
     private String text;
