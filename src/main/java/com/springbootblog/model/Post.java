@@ -60,6 +60,9 @@ public class Post {
         this.comments.add(comment);
     }
 
+    public ArrayList<Comment> getComments() {
+        return comments;
+    }
 
     @PrePersist
     public void prePersist() {

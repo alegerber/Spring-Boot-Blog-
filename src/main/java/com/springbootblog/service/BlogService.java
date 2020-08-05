@@ -11,12 +11,12 @@ import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
 @Service
-public class MyFirstService {
+public class BlogService {
 
     @PersistenceContext
     private EntityManager entityManager;
 
-    public MyFirstService() {
+    public BlogService() {
         System.out.println("test");
     }
 
