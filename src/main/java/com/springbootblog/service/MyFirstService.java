@@ -1,7 +1,7 @@
 package com.springbootblog.service;
 
-import com.springbootblog.dto.HelloDto;
-import com.springbootblog.model.AppVisitorList;
+import com.springbootblog.dto.PostDto;
+import com.springbootblog.model.Post;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
@@ -28,17 +28,17 @@ public class MyFirstService {
     static int counter = 0;
 
     @Transactional
-    public HelloDto hello(String user) {
+    public PostDto hello(String user) {
         counter++;
         String helloMessage = String.format("theses application runs %s times for %s", counter, user);
-        return new HelloDto(helloMessage + " "  + getVisitorList(user));
+        return new PostDto(helloMessage + " "  + getVisitorList(user));
     }
 
     private String getVisitorList(String user) {
-        AppVisitorList result = entityManager.find(AppVisitorList.class, 1L);
+        Post result = entityManager.find(Post.class, 1L);
 
         if (null == result) {
-           AppVisitorList newList = new AppVisitorList();
+           Post newList = new Post();
            result = newList;
            entityManager.persist(newList);
         }

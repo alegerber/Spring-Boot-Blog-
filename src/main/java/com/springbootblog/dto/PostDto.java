@@ -1,9 +1,9 @@
 package com.springbootblog.dto;
 
-public class HelloDto {
+public class PostDto {
     private String text;
 
-    public HelloDto(String text) {
+    public PostDto(String text) {
         this.text = text;
     }
 
