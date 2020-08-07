@@ -5,6 +5,7 @@ import com.springbootblog.model.Post;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 
 public class PostDto {
     private Post post;
@@ -29,11 +30,10 @@ public class PostDto {
         return this.post.getCreated();
     }
 
-    public ArrayList<CommentDto> getComments() {
-        ArrayList<Comment> comments       = this.post.getComments();
-        ArrayList<CommentDto> commentDtos = new ArrayList<>();
+    public List<CommentDto> getComments() {
+        List<CommentDto> commentDtos = new ArrayList<>();
 
-        for (Comment comment: comments) {
+        for (Comment comment: this.post.getComments()) {
             commentDtos.add(new CommentDto(comment));
         }
 

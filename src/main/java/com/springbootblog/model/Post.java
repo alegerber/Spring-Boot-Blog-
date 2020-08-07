@@ -3,6 +3,7 @@ package com.springbootblog.model;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 
 import static javax.persistence.FetchType.LAZY;
 
@@ -26,7 +27,7 @@ public class Post {
     private LocalDateTime created;
 
     @ElementCollection
-    private ArrayList<Comment> comments = new ArrayList<>();
+    private List<Comment> comments = new ArrayList<>();
 
     public long getId() {
         return id;
@@ -60,7 +61,7 @@ public class Post {
         this.comments.add(comment);
     }
 
-    public ArrayList<Comment> getComments() {
+    public List<Comment> getComments() {
         return comments;
     }
 

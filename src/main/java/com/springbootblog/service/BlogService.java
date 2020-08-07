@@ -1,50 +1,20 @@
 package com.springbootblog.service;
 
-import com.springbootblog.dto.PostDto;
-import com.springbootblog.model.Post;
-import org.springframework.boot.context.event.ApplicationReadyEvent;
-import org.springframework.context.event.EventListener;
+import com.springbootblog.dto.HomeDto;
+import com.springbootblog.repository.PostRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
 @Service
 public class BlogService {
 
-    @PersistenceContext
-    private EntityManager entityManager;
-
-    public BlogService() {
-        System.out.println("test");
-    }
-
-    @EventListener(classes = ApplicationReadyEvent.class)
-    public void init() {
-        System.out.println("testEvent");
-    }
-
-    static int counter = 0;
+    @Autowired
+    private PostRepository postRepository;
 
     @Transactional
-    public PostDto hello(String user) {
-        counter++;
-        String helloMessage = String.format("theses application runs %s times for %s", counter, user);
-        return new PostDto(helloMessage + " "  + getVisitorList(user));
-    }
-
-    private String getVisitorList(String user) {
-        Post result = entityManager.find(Post.class, 1L);
-
-        if (null == result) {
-           Post newList = new Post();
-           result = newList;
-           entityManager.persist(newList);
-        }
-
-        result.addVisitors(user);
-
-        return result.getListAsString();
+    public HomeDto home() {
+        return new HomeDto(postRepository.getLatestPosts(5));
     }
 }

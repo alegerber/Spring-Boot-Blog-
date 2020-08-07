@@ -15,7 +15,7 @@ public class BlogController {
     @GetMapping(value = "/")
     public ModelAndView home() {
         ModelAndView modelAndView = new ModelAndView("home");
-        modelAndView.addObject("dto", blogService.hello(userName));
+        modelAndView.addObject("dto", blogService.home());
         return modelAndView;
     }
 }
