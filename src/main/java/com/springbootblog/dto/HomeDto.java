@@ -1,6 +1,5 @@
 package com.springbootblog.dto;
 
-import com.springbootblog.model.Comment;
 import com.springbootblog.model.Post;
 
 import java.util.ArrayList;

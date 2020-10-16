@@ -1,13 +1,13 @@
-package com.springbootblog;
-
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
-
-@SpringBootTest
-class QuickWinDemoApplicationTests {
-
-	@Test
-	void contextLoads() {
-	}
-
-}
+//package com.springbootblog;
+//
+//import org.junit.jupiter.api.Test;
+//unu
+//
+//@SpringBootTest
+//class QuickWinDemoApplicationTests {
+//
+//	@Test
+//	void contextLoads() {
+//	}
+//
+//}
