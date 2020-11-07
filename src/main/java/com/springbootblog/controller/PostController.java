@@ -7,12 +7,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.json.JSONObject;
+
+import java.util.Optional;
 
 @Controller
 public class PostController {
@@ -47,10 +46,10 @@ public class PostController {
     }
 
     @GetMapping(value = "/show")
-    public ModelAndView show() {
-        ModelAndView modelAndView = new ModelAndView("home");
-        //modelAndView.addObject("dto", blogService.home());
-        return modelAndView;
+    public ModelAndView show(@RequestParam("postId") Long postId) {
+        Optional<Post> post = postRepository.findById(postId);
+
+        return new ModelAndView("post/show", "post", post);
     }
 
     @GetMapping(value = "/delete")

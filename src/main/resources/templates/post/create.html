@@ -5,14 +5,12 @@
 <div class="container">
     <div class="row">
         <p class="separator"></p>
-        <form th:action="@{/post/create}" th:object="${post}" method="post">
+        <form th:action="@{/post/create}" th:object="${post}" method="post"  id="postForm">
             <div class="form-group">
                 <div class="input-group">
                     <input class="custom-title" type="text" th:field="*{title}" placeholder="Enter Title here" />
                 </div>
-                <div class="input-group">
-                    <input class="custom-textarea" type="text" th:field="*{content}" placeholder="Enter Content here" />
-                </div>
+                <textarea name="post_content" class="custom-textarea"th:field="${content}" form="postForm">Enter Content here</textarea>
             </div>
             <input  class="btn btn-primary" type="submit" value="Submit"/>
         </form>
