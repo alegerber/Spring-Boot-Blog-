@@ -1,15 +1,22 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/head :: head"></head>
+<body>
 <div th:replace="fragments/header :: header">Header</div>
-<form th:action="@{/post/create}" th:object="${post}" method="post">
-    <div>
-        <label>Title:</label>
-        <input type="text" th:field="*{title}" placeholder="string" />
+<div class="container">
+    <div class="row">
+        <p class="separator"></p>
+        <form th:action="@{/post/create}" th:object="${post}" method="post">
+            <div class="form-group">
+                <div class="input-group">
+                    <input class="custom-title" type="text" th:field="*{title}" placeholder="Enter Title here" />
+                </div>
+                <div class="input-group">
+                    <input class="custom-textarea" type="text" th:field="*{content}" placeholder="Enter Content here" />
+                </div>
+            </div>
+            <input  class="btn btn-primary" type="submit" value="Submit"/>
+        </form>
     </div>
-    <div>
-        <label>Content:</label>
-        <input type="text" th:field="*{content}" placeholder="string" />
-    </div>
-    <input type="submit" value="Submit"/>
-</form>
+</div>
+</body>
 </html>
