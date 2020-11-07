@@ -34,6 +34,8 @@ public class PostController {
         model.addAttribute("title", post.getTitle());
         model.addAttribute("content", post.getContent());
 
+        postRepository.saveAndFlush(post);
+
         return "post/create";
     }
 

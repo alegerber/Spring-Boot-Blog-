@@ -10,7 +10,9 @@ import static javax.persistence.FetchType.LAZY;
 public class Comment {
 
     @Id
-    public long id = 1L;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(columnDefinition = "serial")
+    private Long id;
 
     @Lob
     @Basic(fetch=LAZY)
@@ -23,9 +25,9 @@ public class Comment {
     @Column(name="CREATED")
     private LocalDateTime created;
 
-    public long getId() {
-        return id;
-    }
+    public Long getId() { return id; }
+
+    public void setId(Long id) { this.id = id; }
 
     public String getContent() {
         return content;
@@ -46,6 +48,7 @@ public class Comment {
     @PrePersist
     public void prePersist() {
         created = LocalDateTime.now();
+        updated = LocalDateTime.now();
     }
 
     @PreUpdate
