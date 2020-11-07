@@ -1,0 +1,16 @@
+{
+  "name": "spring-boot-blog",
+  "version": "1.0.0",
+  "description": "a blog written with spring boot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Alexander Gerber",
+  "license": "BSD-2-Clause",
+  "dependencies": {
+    "bootstrap": "^4.5.3",
+    "jquery": "^3.5.1",
+    "popper.js": "^1.16.1"
+  }
+}

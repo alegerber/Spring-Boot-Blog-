@@ -1,0 +1,15 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head"></head>
+<div th:replace="fragments/header :: header">Header</div>
+<form th:action="@{/post/create}" th:object="${post}" method="post">
+    <div>
+        <label>Title:</label>
+        <input type="text" th:field="*{title}" placeholder="string" />
+    </div>
+    <div>
+        <label>Content:</label>
+        <input type="text" th:field="*{content}" placeholder="string" />
+    </div>
+    <input type="submit" value="Submit"/>
+</form>
+</html>

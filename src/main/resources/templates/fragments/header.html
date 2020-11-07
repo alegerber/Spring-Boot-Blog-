@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:replace="fragments/header :: header">Header</div>
+<body>
+<div class="header" th:fragment="header">
+<ul class="navigation">
+    <li><a href="/">Home</a></li>
+    <li><a href="/news">News</a></li>
+    <li><a href="Contact">Contact</a></li>
+    <li style="float:right"><a href="/about">About</a></li>
+</ul>
+</div>
+</body>
+</html>

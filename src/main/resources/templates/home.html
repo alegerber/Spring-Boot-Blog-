@@ -2,15 +2,5 @@
     <head>
         <link rel="stylesheet" th:href="@{/css/main.css}"/>
     </head>
-    <ul class="navigation">
-        <li><a href="/">Home</a></li>
-        <li><a href="/news">News</a></li>
-        <li><a href="Contact">Contact</a></li>
-        <li style="float:right"><a href="/about">About</a></li>
-    </ul>
-    <h1 th:text="${dto.text}"></h1>
-    <form>
-        <input type="text" name="userName">
-        <input type="submit">
-    </form>
+    <div th:replace="fragments/header :: header">Header</div>
 </html>
