@@ -20,12 +20,12 @@ public class PostController {
     @Autowired
     private PostRepository postRepository;
 
-    @GetMapping(value = "/post/create")
+    @GetMapping("/post/create")
     public ModelAndView showCreate() {
         return new ModelAndView("post/create", "post", new Post());
     }
 
-    @PostMapping(value = "/post/create")
+    @PostMapping("/post/create")
     public String submitCreate(@Validated @ModelAttribute("post")Post post, BindingResult result, ModelMap model) {
         if (result.hasErrors()) {
             return "error";
@@ -39,14 +39,14 @@ public class PostController {
         return "post/create";
     }
 
-    @PostMapping(value = "/post/edit")
+    @PostMapping("/post/edit")
     public ModelAndView edit() {
         ModelAndView modelAndView = new ModelAndView("home");
         //modelAndView.addObject("dto", blogService.home());
         return modelAndView;
     }
 
-    @GetMapping(value = "/post/show")
+    @GetMapping("/post/show")
     public ModelAndView show(@RequestParam("postId") Long postId) {
         Optional<Post> post = postRepository.findById(postId);
 
@@ -57,7 +57,7 @@ public class PostController {
         return new ModelAndView("post/show", "post", new PostDto(post.get()));
     }
 
-    @GetMapping(value = "/post/delete")
+    @GetMapping("/post/delete")
     @ResponseBody
     public String delete(Post post) {
         JSONObject jsonObject = new JSONObject();
