@@ -1,0 +1,17 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head"></head>
+<body>
+<div th:replace="fragments/header :: header">Header</div>
+<div class="container">
+    <div class="row">
+        <p class="separator"></p>
+    </div>
+    <div class="row">
+        <h1 th:text="${post.title}"></h1>
+    </div>
+    <div class="row">
+        <p th:text="${post.content}"></p>
+    </div>
+</div>
+</body>
+</html>
