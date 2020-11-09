@@ -10,7 +10,7 @@
                 <div class="input-group">
                     <input class="custom-title" type="text" th:field="*{title}" placeholder="Enter Title here" />
                 </div>
-                <textarea name="post_content" class="custom-textarea"th:field="${content}" form="postForm">Enter Content here</textarea>
+                <textarea name="post_content" class="custom-textarea" th:field="*{content}" form="postForm">Enter Content here</textarea>
             </div>
             <input  class="btn btn-primary" type="submit" value="Submit"/>
         </form>

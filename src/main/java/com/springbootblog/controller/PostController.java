@@ -1,5 +1,6 @@
 package com.springbootblog.controller;
 
+import com.springbootblog.dto.PostDto;
 import com.springbootblog.model.Post;
 import com.springbootblog.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,21 +39,25 @@ public class PostController {
         return "post/create";
     }
 
-    @PostMapping(value = "/edit")
+    @PostMapping(value = "/post/edit")
     public ModelAndView edit() {
         ModelAndView modelAndView = new ModelAndView("home");
         //modelAndView.addObject("dto", blogService.home());
         return modelAndView;
     }
 
-    @GetMapping(value = "/show")
+    @GetMapping(value = "/post/show")
     public ModelAndView show(@RequestParam("postId") Long postId) {
         Optional<Post> post = postRepository.findById(postId);
 
-        return new ModelAndView("post/show", "post", post);
+        if (post.isEmpty()) {
+            throw new RuntimeException("no post found" + postId);
+        }
+
+        return new ModelAndView("post/show", "post", new PostDto(post.get()));
     }
 
-    @GetMapping(value = "/delete")
+    @GetMapping(value = "/post/delete")
     @ResponseBody
     public String delete(Post post) {
         JSONObject jsonObject = new JSONObject();
