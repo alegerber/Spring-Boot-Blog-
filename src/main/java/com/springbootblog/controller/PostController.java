@@ -36,14 +36,32 @@ public class PostController {
 
         postRepository.saveAndFlush(post);
 
-        return "post/create";
+        return "post/show";
+    }
+
+    @GetMapping("/post/edit")
+    public ModelAndView showEdit(@RequestParam("postId") Long postId) {
+        Optional<Post> post = postRepository.findById(postId);
+
+        if (post.isEmpty()) {
+            throw new RuntimeException("no post found" + postId);
+        }
+
+        return new ModelAndView("post/edit", "post", post);
     }
 
     @PostMapping("/post/edit")
-    public ModelAndView edit() {
-        ModelAndView modelAndView = new ModelAndView("home");
-        //modelAndView.addObject("dto", blogService.home());
-        return modelAndView;
+    public String submitEdit(@Validated @ModelAttribute("post")Post post, BindingResult result, ModelMap model) {
+        if (result.hasErrors()) {
+            return "error";
+        }
+
+        model.addAttribute("title", post.getTitle());
+        model.addAttribute("content", post.getContent());
+
+        postRepository.saveAndFlush(post);
+
+        return "post/show";
     }
 
     @GetMapping("/post/show")

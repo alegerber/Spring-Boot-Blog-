@@ -1,0 +1,20 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head"></head>
+<body>
+<div th:replace="fragments/header :: header">Header</div>
+<div class="container">
+    <div class="row">
+        <p class="separator"></p>
+        <form th:action="@{/post/edit}" th:object="${post}" method="post"  id="postForm">
+            <div class="form-group">
+                <div class="input-group">
+                    <input class="custom-title" type="text" th:field="*{title}" placeholder="Enter Title here" />
+                </div>
+                <textarea name="post_content" class="custom-textarea" th:field="*{content}" form="postForm">Enter Content here</textarea>
+            </div>
+            <input  class="btn btn-primary" type="submit" value="Submit"/>
+        </form>
+    </div>
+</div>
+</body>
+</html>
