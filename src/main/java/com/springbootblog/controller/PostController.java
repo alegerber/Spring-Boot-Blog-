@@ -77,10 +77,16 @@ public class PostController {
 
     @GetMapping("/post/delete")
     @ResponseBody
-    public String delete(Post post) {
+    public String delete(@RequestParam("postId") Long postId) {
+        Optional<Post> post = postRepository.findById(postId);
+
+        if (post.isEmpty()) {
+            throw new RuntimeException("no post found" + postId);
+        }
+
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("id", post.getId());
-        postRepository.delete(post);
+        jsonObject.put("id", post.get().getId());
+        postRepository.delete(post.get());
         jsonObject.put("success", true);
         return jsonObject.toString();
     }
