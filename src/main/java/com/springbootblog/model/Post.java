@@ -8,6 +8,7 @@ import java.util.List;
 import static javax.persistence.FetchType.LAZY;
 
 @Entity
+@Table(name = "post")
 public class Post {
 
     @Id

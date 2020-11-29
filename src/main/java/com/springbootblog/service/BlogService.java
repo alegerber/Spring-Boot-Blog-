@@ -25,8 +25,8 @@ public class BlogService {
     }
 
     public List<Post> getLatestPosts(int number) {
-        return entityManager.createQuery(
-                "FROM post ORDER BY created DESC",
+        return entityManager.createNativeQuery(
+                "SELECT * FROM post ORDER BY created DESC",
                 Post.class
         ).setMaxResults(number).getResultList();
     }
